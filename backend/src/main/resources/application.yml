@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: backend-ai-assistant
+  docker:
+    compose:
+      enabled: true
+      file: docker-compose.yml
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vector
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  ai:
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+        timeout: 60s
+      chat:
+        options:
+          model: gemma3:1b
+      embedding:
+        options:
+          model: nomic-embed-text
